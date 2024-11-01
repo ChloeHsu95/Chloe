@@ -16,10 +16,10 @@
         }
         .progress-bar {
             font-size: 2em;
-            display: flex; /* 進度條內部使用 flex */
+            display: inline-flex; /* 進度條內部使用 inline-flex */
             align-items: center; /* 垂直居中 */
             justify-content: flex-start; /* 使標題對齊 */
-            width: 100%; /* 使進度條占滿容器 */
+            width: auto; /* 使進度條自動寬度 */
         }
     </style>
 </head>
@@ -79,7 +79,7 @@
         progressBar += ` (${formatNumber(currentValue)} / ${formatNumber(targetValue)})`;
 
         // 更新網頁中的元素
-        document.getElementById(elementId).innerHTML = progressBar; // 使用 innerHTML 以支持 HTML 格式
+        document.getElementById(elementId).innerText = progressBar; // 使用 innerText
     }
 
     // 更新所有進度條
