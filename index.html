@@ -6,7 +6,7 @@
     <title>Multiple Progress Bars with Moon Phases</title>
     <style>
         body {
-            background-color: #DED8CE; /* 可選：添加背景顏色 */
+            background-color: #DED8CE; /* 背景顏色 */
             font-family: Arial, sans-serif;
         }
         .progress-container {
@@ -20,10 +20,6 @@
         .progress-title {
             font-size: 1.5em;
             margin-top: 10px;
-        }
-        .progress-text {
-            font-size: 1.2em;
-            margin-top: 5px;
         }
     </style>
 </head>
@@ -45,12 +41,12 @@
     
     // 設定每個進度條的資料
     const progressBars = [
-        { elementId: "progressBar1", currentValue: 4, targetValue: 6, title: "Korean-TOPIK" },
-        { elementId: "progressBar2", currentValue: 0, targetValue: 990, title: "English-TOEIC" }
+        { elementId: "progressBar1", currentValue: 4, targetValue: 6 },
+        { elementId: "progressBar2", currentValue: 0, targetValue: 990 }
     ];
 
     // 更新進度條的函式
-    function updateProgressBar(progressBarData) {
+    function updateProgressBar(progressBarData, title) {
         let { elementId, currentValue, targetValue } = progressBarData;
         
         // 計算進度百分比
@@ -62,11 +58,12 @@
         let remainingMoons = 10 - fullMoons - 1; // 剩餘符號數
 
         // 構建進度條字符串
-        let progressBar = "🌕".repeat(fullMoons);
+        let progressBar = `${title} `; // 在這裡添加標題
+        progressBar += "🌕".repeat(fullMoons);
         progressBar += moonPhases[currentPhaseIndex] || "";
         progressBar += "🌑".repeat(remainingMoons);
         
-        // 在進度條末尾顯示進度比例，確保位置在月亮後面
+        // 在進度條末尾顯示進度比例
         progressBar += ` (${currentValue}/${targetValue})`;
 
         // 更新網頁中的元素
@@ -74,7 +71,8 @@
     }
 
     // 更新所有進度條
-    progressBars.forEach(updateProgressBar);
+    updateProgressBar(progressBars[0], "Korean-TOPIK");
+    updateProgressBar(progressBars[1], "English-TOEIC");
 </script>
 
 </body>
