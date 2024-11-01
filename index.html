@@ -26,13 +26,13 @@
 <body>
 
 <div class="progress-container">
+    <div class="progress-title">𝐊𝐨𝐫𝐞𝐚𝐧🇰🇷－𝐓𝐎𝐏𝐈𝐊</div>
     <div class="progress-bar" id="progressBar1"></div>
-    <div class="progress-title">Korean-TOPIK</div>
 </div>
 
 <div class="progress-container">
+    <div class="progress-title">𝐄𝐧𝐠𝐥𝐢𝐬𝐡🇺🇸－𝐓𝐎𝐄𝐈𝐂</div>
     <div class="progress-bar" id="progressBar2"></div>
-    <div class="progress-title">English-TOEIC</div>
 </div>
 
 <script>
@@ -41,8 +41,8 @@
     
     // 設定每個進度條的資料
     const progressBars = [
-        { elementId: "progressBar1", currentValue: 4, targetValue: 6 },
-        { elementId: "progressBar2", currentValue: 0, targetValue: 990 }
+        { elementId: "progressBar1", currentValue: 4, targetValue: 6, title: "Korean-TOPIK" },
+        { elementId: "progressBar2", currentValue: 0, targetValue: 990, title: "English-TOEIC" }
     ];
 
     // 更新進度條的函式
@@ -58,8 +58,8 @@
         let remainingMoons = 10 - fullMoons - 1; // 剩餘符號數
 
         // 構建進度條字符串
-        let progressBar = moonPhases[currentPhaseIndex] || "";
-        progressBar += "🌕".repeat(fullMoons);
+        let progressBar = "🌕".repeat(fullMoons);
+        progressBar += moonPhases[currentPhaseIndex] || "";
         progressBar += "🌑".repeat(remainingMoons);
 
         // 在進度條末尾顯示進度比例
