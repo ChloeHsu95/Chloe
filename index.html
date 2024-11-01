@@ -11,11 +11,14 @@
         }
         .progress-container {
             margin-bottom: 20px;
-            text-align: center;
+            text-align: left; /* 將容器中的文本對齊方式設為左側 */
+            width: 100%; /* 設定容器寬度 */
         }
         .progress-bar {
             font-size: 2em;
-            text-align: center;
+            display: flex; /* 使用 flex 使標題和數字保持在同一行 */
+            justify-content: space-between; /* 使標題和數字在兩端 */
+            align-items: center; /* 垂直居中 */
         }
     </style>
 </head>
@@ -59,7 +62,7 @@
                                  .replace(/3/g, '𝟑')
                                  .replace(/4/g, '𝟒')
                                  .replace(/5/g, '𝟓')
-                                 .replace(/6/g, '𝟔')
+                                 .replace(/6/g, '𝟖')
                                  .replace(/7/g, '𝟕')
                                  .replace(/8/g, '𝟖')
                                  .replace(/9/g, '𝟗');
@@ -75,7 +78,7 @@
         progressBar += ` (${formatNumber(currentValue)} / ${formatNumber(targetValue)})`;
 
         // 更新網頁中的元素
-        document.getElementById(elementId).innerText = progressBar;
+        document.getElementById(elementId).innerHTML = progressBar; // 使用 innerHTML 以支持 HTML 格式
     }
 
     // 更新所有進度條
