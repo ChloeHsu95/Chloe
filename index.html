@@ -11,14 +11,16 @@
         }
         .progress-container {
             margin-bottom: 20px;
-            text-align: left; /* 將容器中的文本對齊方式設為左側 */
-            width: 100%; /* 設定容器寬度 */
+            display: flex; /* 使用 flex 讓內容居中 */
+            justify-content: center; /* 中心對齊整個進度條 */
         }
         .progress-bar {
             font-size: 2em;
-            display: flex; /* 使用 flex 使標題和數字保持在同一行 */
-            justify-content: space-between; /* 使標題和數字在兩端 */
+            display: flex; /* 進度條內部使用 flex */
             align-items: center; /* 垂直居中 */
+            width: 100%; /* 使進度條占滿容器 */
+            max-width: 600px; /* 設定最大寬度以避免過寬 */
+            justify-content: space-between; /* 標題和數字在兩端 */
         }
     </style>
 </head>
@@ -62,7 +64,7 @@
                                  .replace(/3/g, '𝟑')
                                  .replace(/4/g, '𝟒')
                                  .replace(/5/g, '𝟓')
-                                 .replace(/6/g, '𝟖')
+                                 .replace(/6/g, '𝟔')
                                  .replace(/7/g, '𝟕')
                                  .replace(/8/g, '𝟖')
                                  .replace(/9/g, '𝟗');
