@@ -51,6 +51,20 @@
         let currentPhaseIndex = Math.floor((progress * 100 % 10) / 2.5); // 當前階段符號索引
         let remainingMoons = 10 - fullMoons - 1; // 剩餘符號數
 
+        // 將數字轉換為特殊格式
+        const formatNumber = (num) => {
+            return num.toString().replace(/0/g, '𝟎')
+                                 .replace(/1/g, '𝟏')
+                                 .replace(/2/g, '𝟐')
+                                 .replace(/3/g, '𝟑')
+                                 .replace(/4/g, '𝟒')
+                                 .replace(/5/g, '𝟓')
+                                 .replace(/6/g, '𝟔')
+                                 .replace(/7/g, '𝟕')
+                                 .replace(/8/g, '𝟖')
+                                 .replace(/9/g, '𝟗');
+        };
+
         // 構建進度條字符串，將標題放在月亮符號之前
         let progressBar = `${title} `; // 在這裡添加標題
         progressBar += "🌕".repeat(fullMoons);
@@ -58,11 +72,10 @@
         progressBar += "🌑".repeat(remainingMoons);
         
         // 在進度條末尾顯示進度比例，將數字格式化為特殊樣式
-        progressBar += ` (𝟗𝟔 / 𝟔)`;
-        progressBar += ` (𝟎 / 𝟗𝟗𝟎)`;
-        
+        progressBar += ` (${formatNumber(currentValue)} / ${formatNumber(targetValue)})`;
+
         // 更新網頁中的元素
-        document.getElementById(elementId).innerText = progressBar.replace(" (𝟗𝟖 / 𝟖)", ` (${currentValue} / ${targetValue})`);
+        document.getElementById(elementId).innerText = progressBar;
     }
 
     // 更新所有進度條
