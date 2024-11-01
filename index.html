@@ -16,10 +16,11 @@
         }
         .progress-bar {
             font-size: 2em;
-            display: inline-flex; /* 進度條內部使用 inline-flex */
+            display: flex; /* 進度條內部使用 flex */
             align-items: center; /* 垂直居中 */
             justify-content: flex-start; /* 使標題對齊 */
             width: auto; /* 使進度條自動寬度 */
+            white-space: nowrap; /* 防止換行 */
         }
     </style>
 </head>
@@ -63,7 +64,7 @@
                                  .replace(/3/g, '𝟑')
                                  .replace(/4/g, '𝟒')
                                  .replace(/5/g, '𝟓')
-                                 .replace(/6/g, '𝟖')
+                                 .replace(/6/g, '𝟔')
                                  .replace(/7/g, '𝟕')
                                  .replace(/8/g, '𝟖')
                                  .replace(/9/g, '𝟗');
