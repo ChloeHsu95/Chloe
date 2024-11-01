@@ -57,11 +57,12 @@
         progressBar += moonPhases[currentPhaseIndex] || "";
         progressBar += "🌑".repeat(remainingMoons);
         
-        // 在進度條末尾顯示進度比例
-        progressBar += ` (${currentValue}/${targetValue})`;
-
+        // 在進度條末尾顯示進度比例，將數字格式化為特殊樣式
+        progressBar += ` (𝟗𝟔 / 𝟔)`;
+        progressBar += ` (𝟎 / 𝟗𝟗𝟎)`;
+        
         // 更新網頁中的元素
-        document.getElementById(elementId).innerText = progressBar;
+        document.getElementById(elementId).innerText = progressBar.replace(" (𝟗𝟖 / 𝟖)", ` (${currentValue} / ${targetValue})`);
     }
 
     // 更新所有進度條
