@@ -35,13 +35,13 @@
     
     // 設定每個進度條的資料
     const progressBars = [
-        { elementId: "progressBar1", currentValue: 4, targetValue: 6, title: "Korean-TOPIK" },
-        { elementId: "progressBar2", currentValue: 0, targetValue: 990, title: "English-TOEIC" }
+        { currentValue: 4, targetValue: 6, title: "Korean-TOPIK" },
+        { currentValue: 0, targetValue: 990, title: "English-TOEIC" }
     ];
 
     // 更新進度條的函式
-    function updateProgressBar(progressBarData) {
-        let { elementId, currentValue, targetValue, title } = progressBarData;
+    function updateProgressBar(progressBarData, elementId) {
+        let { currentValue, targetValue, title } = progressBarData;
         
         // 計算進度百分比
         let progress = currentValue / targetValue;
@@ -49,3 +49,25 @@
         // 計算要顯示的滿月符號數量、當前階段符號和剩餘符號
         let fullMoons = Math.floor(progress * 10); // 滿月符號數
         let currentPhaseIndex = Math.floor((progress * 100 % 10) / 2.5); // 當前階段符號索引
+        let remainingMoons = 10 - fullMoons - 1; // 剩餘符號數
+
+        // 構建進度條字符串，將標題放在月亮符號之前
+        let progressBar = `${title} `; // 在這裡添加標題
+        progressBar += "🌕".repeat(fullMoons);
+        progressBar += moonPhases[currentPhaseIndex] || "";
+        progressBar += "🌑".repeat(remainingMoons);
+        
+        // 在進度條末尾顯示進度比例
+        progressBar += ` (${currentValue}/${targetValue})`;
+
+        // 更新網頁中的元素
+        document.getElementById(elementId).innerText = progressBar;
+    }
+
+    // 更新所有進度條
+    updateProgressBar(progressBars[0], "progressBar1");
+    updateProgressBar(progressBars[1], "progressBar2");
+</script>
+
+</body>
+</html>
