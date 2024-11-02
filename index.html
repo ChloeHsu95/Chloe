@@ -11,15 +11,15 @@
             text-align: center;
         }
         .progress-container {
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* 減少上下間距 */
             display: flex;
             justify-content: center;
         }
         .progress-bar {
-            font-size: 2em;
+            font-size: 1.5em; /* 減小字型大小 */
             text-align: left; /* 保持文字左對齊 */
-            width: 24em; /* 增加寬度 */
-            padding-left: 2em; /* 固定左側縮進 */
+            width: 20em; /* 減少寬度 */
+            padding-left: 1.5em; /* 減少左側縮進 */
             white-space: nowrap; /* 禁止換行 */
         }
     </style>
@@ -44,24 +44,20 @@
     
     // 設定每個進度條的資料
     const progressBars = [
-        { currentValue: 4, targetValue: 6, title: "🇰🇷 𝐓𝐎𝐏𝐈𝐊\u00A0" }, // 標題後面保留空格
-        { currentValue: 0, targetValue: 990, title: "🇺🇸 𝐓𝐎𝐄𝐈𝐂\u00A0" }, // 標題後面保留空格
-        { currentValue: 0, targetValue: 6, title: "🇺🇸 𝐂𝐄𝐅𝐑\u00A0\u00A0", levels: ["𝐀𝟏", "𝐀𝟐", "𝐁𝟏", "𝐁𝟐", "𝐂𝟏", "𝐂𝟐"] } // currentValue 設為 0 表示尚未開始
+        { currentValue: 4, targetValue: 6, title: "🇰🇷 𝐓𝐎𝐏𝐈𝐊\u00A0" },
+        { currentValue: 0, targetValue: 990, title: "🇺🇸 𝐓𝐎𝐄𝐈𝐂\u00A0" },
+        { currentValue: 0, targetValue: 6, title: "🇺🇸 𝐂𝐄𝐅𝐑\u00A0\u00A0", levels: ["𝐀𝟏", "𝐀𝟐", "𝐁𝟏", "𝐁𝟐", "𝐂𝟏", "𝐂𝟐"] }
     ];
 
     // 更新進度條的函式
     function updateProgressBar(progressBarData, elementId) {
         let { currentValue, targetValue, title, levels } = progressBarData;
         
-        // 計算進度百分比
         let progress = currentValue / targetValue;
-        
-        // 計算要顯示的滿月符號數量、當前階段符號和剩餘符號
-        let fullMoons = Math.floor(progress * 10); // 滿月符號數
-        let currentPhaseIndex = Math.floor((progress * 100 % 10) / 2.5); // 當前階段符號索引
-        let remainingMoons = 10 - fullMoons - 1; // 剩餘符號數
+        let fullMoons = Math.floor(progress * 10);
+        let currentPhaseIndex = Math.floor((progress * 100 % 10) / 2.5);
+        let remainingMoons = 10 - fullMoons - 1;
 
-        // 將數字轉換為特殊格式
         const formatNumber = (num) => {
             return num.toString().replace(/0/g, '𝟎')
                                  .replace(/1/g, '𝟏')
@@ -75,24 +71,20 @@
                                  .replace(/9/g, '𝟗');
         };
 
-        // 構建進度條字符串，將標題放在月亮符號之前
-        let progressBar = `${title}`; // 使用 Unicode 不間斷空白符
+        let progressBar = `${title}`;
         progressBar += "🌕".repeat(fullMoons);
         progressBar += moonPhases[currentPhaseIndex] || "";
         progressBar += "🌑".repeat(remainingMoons);
-        
-        // 在進度條末尾顯示進度比例，將數字格式化為特殊樣式
+
         if (levels) {
-            progressBar += ` (𝟎 / 𝐂𝟐)`; // 更新為 (𝟎 / 𝐂𝟐) 表示尚未開始
+            progressBar += ` (𝟎 / 𝐂𝟐)`;
         } else {
             progressBar += ` (${formatNumber(currentValue)} / ${formatNumber(targetValue)})`;
         }
 
-        // 更新網頁中的元素
         document.getElementById(elementId).innerText = progressBar;
     }
 
-    // 更新所有進度條
     updateProgressBar(progressBars[0], "progressBar1");
     updateProgressBar(progressBars[1], "progressBar2");
     updateProgressBar(progressBars[2], "progressBar3");
