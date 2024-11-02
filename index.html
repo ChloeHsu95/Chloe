@@ -6,7 +6,7 @@
     <title>Multiple Progress Bars with Moon Phases</title>
     <style>
         body {
-            background-color: #DED8CE; /* 背景顏色 */
+            background-color: #FFDFD3; /* 背景顏色 */
             font-family: Arial, sans-serif;
             text-align: center;
         }
@@ -44,9 +44,9 @@
     
     // 設定每個進度條的資料
     const progressBars = [
-        { currentValue: 4, targetValue: 6, title: "𝐊𝐨𝐫𝐞𝐚𝐧🇰🇷－𝐓𝐎𝐏𝐈𝐊" }, // 標題後面保留空格
-        { currentValue: 0, targetValue: 990, title: "𝐄𝐧𝐠𝐥𝐢𝐬𝐡🇺🇸－𝐓𝐎𝐄𝐈𝐂" }, // 標題後面保留空格
-        { currentValue: 0, targetValue: 6, title: "𝐄𝐧𝐠𝐥𝐢𝐬𝐡🇺🇸－𝐂𝐄𝐅𝐑", levels: ["𝐀𝟏", "𝐀𝟐", "𝐁𝟏", "𝐁𝟐", "𝐂𝟏", "𝐂𝟐"] } // currentValue 設為 0 表示尚未開始
+        { currentValue: 4, targetValue: 6, title: "🇰🇷 𝐓𝐎𝐏𝐈𝐊\u00A0" }, // 標題後面保留空格
+        { currentValue: 0, targetValue: 990, title: "🇺🇸 𝐓𝐎𝐄𝐈𝐂\u00A0" }, // 標題後面保留空格
+        { currentValue: 0, targetValue: 6, title: "🇺🇸 𝐂𝐄𝐅𝐑\u00A0\u00A0", levels: ["𝐀𝟏", "𝐀𝟐", "𝐁𝟏", "𝐁𝟐", "𝐂𝟏", "𝐂𝟐"] } // currentValue 設為 0 表示尚未開始
     ];
 
     // 更新進度條的函式
@@ -76,7 +76,7 @@
         };
 
         // 構建進度條字符串，將標題放在月亮符號之前
-        let progressBar = `${title}  `; // 在這裡添加標題和空格
+        let progressBar = `${title}`; // 使用 Unicode 不間斷空白符
         progressBar += "🌕".repeat(fullMoons);
         progressBar += moonPhases[currentPhaseIndex] || "";
         progressBar += "🌑".repeat(remainingMoons);
